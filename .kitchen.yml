@@ -21,6 +21,8 @@ provisioner:
         host: localhost
         install_method: war
         mirror: http://mirrors.jenkins-ci.org
+        user: customjenkinsuid
+        group: customjenkinsgid
 
 platforms:
   - name: ubuntu-12.04
