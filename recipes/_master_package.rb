@@ -71,6 +71,9 @@ when 'rhel'
   end
 end
 
+# ensure unix user
+include_recipe 'jenkins::_user'
+
 service 'jenkins' do
   supports status: true, restart: true, reload: true
   action  [:enable, :start]

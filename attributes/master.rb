@@ -177,12 +177,20 @@ default['jenkins']['master'].tap do |master|
   #
   # The directory where Jenkins should write its logfile(s). **This attribute
   # is only used by the package installer!**. The log directory will be owned
-  # by the same user and group as the home directory. If you need furthor
+  # by the same user and group as the home directory. If you need further
   # customization, you should override these values in your wrapper cookbook.
   #
   #   node.set['jenkins']['master']['log_directory'] = '/var/log/jenkins'
   #
   master['log_directory'] = '/var/log/jenkins'
+
+  #
+  # The directory for cache files. The directory will be owned
+  # by the same user and group as the home directory.
+  #
+  #   node.set['jenkins']['master']['cache_directory'] = '/var/cache/jenkins'
+  #
+  master['cache_directory'] = '/var/cache/jenkins'
 
   #
   # The timeout passed to the runit cookbook's service resource. Override the
