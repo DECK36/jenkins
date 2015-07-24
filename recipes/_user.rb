@@ -37,5 +37,6 @@ end
 # fix cache dir ownership (necessary if it already existed)
 execute "chown_#{node['jenkins']['master']['cache_directory']}" do
   command "chown -R #{node['jenkins']['master']['user']}:#{node['jenkins']['master']['group']} #{node['jenkins']['master']['cache_directory']}"
-  not_if { Etc.getpwuid(File.stat("#{node['jenkins']['master']['cache_directory']}/war").uid).name != "node['jenkins']['master']['user']" }
+  not_if { !File.exists?("#{node['jenkins']['master']['cache_directory']}/war") \
+        || Etc.getpwuid(File.stat("#{node['jenkins']['master']['cache_directory']}/war").uid).name != "node['jenkins']['master']['user']" }
 end
